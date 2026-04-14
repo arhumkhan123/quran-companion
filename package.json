@@ -9,12 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "groq-sdk": "^1.1.2",
+    "html-to-image": "^1.11.13",
     "next": "16.2.0",
+    "next-auth": "^4.24.13",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/next-auth": "^3.13.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
