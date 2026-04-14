@@ -122,9 +122,9 @@ export default function AyahCard({ verse: verseProp }: Props) {
 
   return (
     <div className="card overflow-hidden shadow-sm">
-      {/* Green top bar */}
-      <div className="bg-green-dark px-6 py-3 flex items-center justify-between">
-        <span className="text-xs font-medium tracking-widest uppercase text-green-light">
+      {/* Card header */}
+      <div className="px-6 py-3 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <span className="text-xs font-medium tracking-widest uppercase" style={{ color: "var(--color-muted)" }}>
           Today&apos;s Ayah
         </span>
         <span className="text-xs font-medium text-gold">{verse.verse_key}</span>
@@ -162,10 +162,10 @@ export default function AyahCard({ verse: verseProp }: Props) {
         {tafsirSummary ? (
           <div
             className="card-sand p-4"
-            style={{ borderLeft: "3px solid var(--color-green-dark)" }}
+            style={{ borderLeft: "3px solid #2d5a3d" }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--color-green-dark)" }}>
+              <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted)" }}>
                 Today&apos;s Reflection Prompt
               </span>
             </div>
@@ -207,7 +207,7 @@ export default function AyahCard({ verse: verseProp }: Props) {
               onClick={handleAsk}
               disabled={asking || !question.trim()}
               className="flex-shrink-0 text-xs font-medium px-4 py-2.5 rounded-xl text-white transition disabled:opacity-40"
-              style={{ backgroundColor: "var(--color-green-dark)" }}
+              style={{ backgroundColor: "var(--color-green-btn)" }}
             >
               {asking ? "..." : "Ask"}
             </button>

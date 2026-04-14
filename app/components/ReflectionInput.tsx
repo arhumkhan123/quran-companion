@@ -145,8 +145,8 @@ export default function ReflectionInput({ verseKey, roomId, accessToken, arabicT
 
   return (
     <div className="card overflow-hidden shadow-sm">
-      <div className="px-6 py-3 border-b border-theme bg-sand">
-        <h2 className="font-display text-base font-bold text-green-dark">
+      <div className="px-6 py-3 border-b border-theme">
+        <h2 className="font-display text-base font-bold" style={{ color: "var(--color-text)" }}>
           Your Reflection
         </h2>
         <p className="text-xs mt-0.5 text-muted">
@@ -172,7 +172,8 @@ export default function ReflectionInput({ verseKey, roomId, accessToken, arabicT
           <button
             onClick={handleSubmit}
             disabled={submitting || !reflection.trim()}
-            className="bg-green-dark text-white text-sm font-medium px-5 py-2.5 rounded-xl transition disabled:opacity-40"
+            className="text-white text-sm font-medium px-5 py-2.5 rounded-xl transition disabled:opacity-40"
+            style={{ backgroundColor: "var(--color-green-btn)" }}
           >
             {submitting ? "Sharing..." : "Share with circle →"}
           </button>

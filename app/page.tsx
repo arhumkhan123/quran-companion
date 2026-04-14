@@ -37,8 +37,8 @@ function SideNavItem({
       onClick={onClick}
       className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left transition-all group"
       style={{
-        backgroundColor: active ? "rgba(82,183,136,0.12)" : "transparent",
-        color: active ? "var(--color-green-dark)" : "var(--color-muted)",
+        backgroundColor: active ? "rgba(255,255,255,0.06)" : "transparent",
+        color: active ? "var(--color-text)" : "var(--color-muted)",
       }}
     >
       <span className="text-base leading-none w-5 text-center">{tab.icon}</span>
@@ -48,12 +48,6 @@ function SideNavItem({
       >
         {tab.label}
       </span>
-      {active && (
-        <div
-          className="ml-auto w-1.5 h-1.5 rounded-full"
-          style={{ backgroundColor: "var(--color-green-dark)" }}
-        />
-      )}
     </button>
   );
 }
@@ -365,8 +359,8 @@ function MainContent() {
         className="sticky top-0 z-20 border-b"
         style={{
           backgroundColor: "var(--color-cream-dark)",
-          borderColor: "rgba(255,255,255,0.06)",
-          boxShadow: "0 1px 0 rgba(82,183,136,0.08), 0 2px 16px rgba(0,0,0,0.3)",
+          borderColor: "rgba(255,255,255,0.08)",
+          boxShadow: "0 1px 0 rgba(255,255,255,0.05), 0 2px 16px rgba(0,0,0,0.4)",
         }}
       >
         <div
@@ -375,7 +369,7 @@ function MainContent() {
         >
           <span
             className="font-display text-lg font-bold lg:hidden"
-            style={{ color: "var(--color-green-dark)", fontFamily: "var(--font-display)" }}
+            style={{ color: "var(--color-text)", fontFamily: "var(--font-display)" }}
           >
             Quran Companion
           </span>
@@ -424,13 +418,12 @@ function MainContent() {
           <div
             className="px-6 py-6 border-b"
             style={{
-              borderColor: "rgba(255,255,255,0.05)",
-              background: "linear-gradient(180deg, rgba(82,183,136,0.08) 0%, transparent 100%)",
+              borderColor: "rgba(255,255,255,0.08)",
             }}
           >
             <p
               className="font-display text-base font-bold"
-              style={{ color: "var(--color-green-dark)", fontFamily: "var(--font-display)" }}
+              style={{ color: "var(--color-text)", fontFamily: "var(--font-display)" }}
             >
               Quran Companion
             </p>
@@ -594,8 +587,8 @@ function MainContent() {
         className="lg:hidden fixed bottom-0 left-0 right-0 z-20 border-t"
         style={{
           backgroundColor: "var(--color-cream-dark)",
-          borderColor: "rgba(255,255,255,0.06)",
-          boxShadow: "0 -1px 0 rgba(82,183,136,0.08), 0 -4px 16px rgba(0,0,0,0.3)",
+          borderColor: "rgba(255,255,255,0.08)",
+          boxShadow: "0 -1px 0 rgba(255,255,255,0.05), 0 -4px 16px rgba(0,0,0,0.4)",
         }}
       >
         <div className="flex" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
@@ -613,14 +606,14 @@ function MainContent() {
                 <span className="text-base leading-none">{tab.icon}</span>
                 <span
                   className="text-xs font-medium leading-none"
-                  style={{ color: isActive ? "var(--color-green-dark)" : "var(--color-muted)" }}
+                  style={{ color: isActive ? "var(--color-text)" : "var(--color-muted)" }}
                 >
                   {tab.label}
                 </span>
                 {isActive && (
                   <div
                     className="w-4 h-0.5 rounded-full mt-0.5"
-                    style={{ backgroundColor: "var(--color-green-dark)" }}
+                    style={{ backgroundColor: "var(--color-text)" }}
                   />
                 )}
               </button>

@@ -241,7 +241,7 @@ export default function RoomFeed({ roomId, refreshKey = 0 }: Props) {
               <div className="p-5">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-green-dark flex items-center justify-center text-white text-xs font-bold">
+                    <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: "#2a2a2a", border: "1px solid rgba(255,255,255,0.12)" }}>
                       {initial}
                     </div>
                     <span className="text-sm font-medium text-main">{displayName}</span>
@@ -298,7 +298,7 @@ export default function RoomFeed({ roomId, refreshKey = 0 }: Props) {
                       <div key={reply.id} className="flex gap-2">
                         <div
                           className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold mt-0.5"
-                          style={{ backgroundColor: "var(--color-green-mid)", fontSize: "0.6rem" }}
+                          style={{ backgroundColor: "#2a2a2a", border: "1px solid rgba(255,255,255,0.12)", fontSize: "0.6rem" }}
                         >
                           {reply.authorName[0]?.toUpperCase() ?? "?"}
                         </div>
@@ -336,7 +336,7 @@ export default function RoomFeed({ roomId, refreshKey = 0 }: Props) {
                         onClick={() => handleReply(postId)}
                         disabled={submittingReply[postId] || !replyInputs[postId]?.trim()}
                         className="text-xs font-medium px-3 py-2 rounded-lg text-white disabled:opacity-40 transition-opacity"
-                        style={{ backgroundColor: "var(--color-green-dark)" }}
+                        style={{ backgroundColor: "var(--color-green-btn)" }}
                       >
                         {submittingReply[postId] ? "..." : "Send"}
                       </button>

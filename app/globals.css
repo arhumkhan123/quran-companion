@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand greens */
-  --color-green-dark: #52b788;   /* accent green — readable on dark bg (text, headings) */
-  --color-green-mid:  #74c69d;   /* secondary accent (links, subtle headings) */
-  --color-green-light: #a8dfc0;  /* faint accent */
-  --color-green-btn:  #1e4d2b;   /* button / avatar backgrounds (dark, pairs with white text) */
+  /* Brand green — used ONLY for CTAs, active states, tiny accents */
+  --color-green-dark: #4d8c68;   /* sage green — sparingly for links/accents */
+  --color-green-mid:  #3d7a58;   /* deeper sage */
+  --color-green-light: #6aaa82;  /* lighter sage */
+  --color-green-btn:  #1e4d2b;   /* dark green CTA button background */
 
-  /* Backgrounds */
-  --color-cream:      #0d1f0d;   /* page background — deep forest green */
-  --color-cream-dark: #091609;   /* header / sidebar — slightly deeper */
-  --color-sand:       #132813;   /* card-accent sections */
+  /* Backgrounds — pure neutral, no green tint */
+  --color-cream:      #111111;   /* page background */
+  --color-cream-dark: #0d0d0d;   /* header / sidebar */
+  --color-sand:       #1a1a1a;   /* card section backgrounds */
 
   /* Borders */
-  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.08);
 
-  /* Text */
-  --color-text:        #dff0df;
-  --color-muted:       #5a8a6a;
-  --color-subtle:      #9cbea8;
-  --color-placeholder: #3d6b4a;
+  /* Text — neutral white/gray, no green */
+  --color-text:        #e8e8e8;
+  --color-muted:       #888888;
+  --color-subtle:      #aaaaaa;
+  --color-placeholder: #555555;
 
   /* Gold */
   --color-gold: #d4a843;
@@ -52,15 +52,13 @@
 
   /* Cards */
   .card {
-    background-color: rgba(255, 255, 255, 0.035);
+    background-color: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1rem;
-    box-shadow:
-      0 2px 12px rgba(0, 0, 0, 0.35),
-      0 0 0 1px rgba(82, 183, 136, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   }
   .card-sand {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #1f1f1f;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0.75rem;
   }
@@ -69,9 +67,7 @@
 /* ─── Base ────────────────────────────────────────────── */
 body {
   background-color: var(--color-cream);
-  background-image:
-    radial-gradient(ellipse at 15% 0%, rgba(52, 183, 136, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 100%, rgba(30, 77, 43, 0.15) 0%, transparent 50%);
+  background-image: none;
   color: var(--color-text);
   font-family: var(--font-sans);
 }

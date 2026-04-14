@@ -197,14 +197,11 @@ export default function DuaBoard({ roomId, accessToken }: Props) {
       <div className="card overflow-hidden shadow-sm">
         <div
           className="px-6 py-3 border-b"
-          style={{
-            borderColor: "var(--color-border)",
-            backgroundColor: "var(--color-sand)",
-          }}
+          style={{ borderColor: "var(--color-border)" }}
         >
           <h2
             className="font-display text-base font-bold"
-            style={{ color: "var(--color-green-dark)" }}
+            style={{ color: "var(--color-text)" }}
           >
             Request Du&apos;a from Your Circle
           </h2>
@@ -295,7 +292,7 @@ export default function DuaBoard({ roomId, accessToken }: Props) {
               <div className="flex items-start gap-3">
                 <div
                   className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-bold mt-0.5"
-                  style={{ backgroundColor: "var(--color-green-btn)" }}
+                  style={{ backgroundColor: "#2a2a2a", border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   {initial}
                 </div>
