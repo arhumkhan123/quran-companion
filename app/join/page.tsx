@@ -1,9 +1,10 @@
 "use client";
+import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function JoinPage() {
+function JoinPageInner() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -81,5 +82,13 @@ export default function JoinPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function JoinPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--color-cream)" }}>Loading...</div>}>
+      <JoinPageInner />
+    </Suspense>
   );
 }
