@@ -1,7 +1,7 @@
-import fs from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "posts.json");
+// In-memory store for optimistic/same-session posts.
+// We do NOT write to disk — Vercel's filesystem is ephemeral and
+// shared nothing between serverless function invocations.
+// The Quran Foundation API is the durable source of truth for posts.
 
 export type StoredPost = {
   id: number;
@@ -16,29 +16,11 @@ export type StoredPost = {
   createdAt: string;
 };
 
-type Store = {
-  posts: StoredPost[];
-};
-
-function readStore(): Store {
-  try {
-    if (!fs.existsSync(DATA_FILE)) return { posts: [] };
-    return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
-  } catch {
-    return { posts: [] };
-  }
-}
-
-function writeStore(store: Store): void {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(DATA_FILE, JSON.stringify(store, null, 2), "utf-8");
-}
+const _posts: StoredPost[] = [];
 
 export function savePost(post: StoredPost): void {
-  const store = readStore();
   const thirtySecondsAgo = Date.now() - 30_000;
-  const isDuplicate = store.posts.some(
+  const isDuplicate = _posts.some(
     (p) =>
       p.authorId === post.authorId &&
       p.roomId === post.roomId &&
@@ -46,14 +28,12 @@ export function savePost(post: StoredPost): void {
       new Date(p.createdAt).getTime() > thirtySecondsAgo
   );
   if (!isDuplicate) {
-    store.posts.push(post);
-    writeStore(store);
+    _posts.push(post);
   }
 }
 
 export function getPostsByRoom(roomId: number, limit = 50): StoredPost[] {
-  const store = readStore();
-  return store.posts
+  return _posts
     .filter((p) => p.roomId === roomId)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, limit);

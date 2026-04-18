@@ -33,8 +33,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} ${amiri.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen font-sans">
+      <body className="min-h-screen font-sans" suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -532,7 +532,7 @@ function MainContent() {
 
                 <WeeklySummary />
 
-                <Link href="/history" className="block group">
+                <Link href="/reflections" className="block group">
                   <div className="card p-5 flex items-center justify-between transition-all group-hover:border-green-500/20">
                     <div className="flex items-center gap-3">
                       <div
@@ -554,7 +554,7 @@ function MainContent() {
                   </div>
                 </Link>
 
-                <Link href="/habits" className="block group">
+                <Link href="/daily-habits" className="block group">
                   <div className="card p-5 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div

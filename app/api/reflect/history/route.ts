@@ -1,33 +1,43 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/authOptions";
+export async function GET(request: Request) {
+  const accessToken = request.headers.get("x-auth-token");
 
-export async function GET() {
-  const session = await getServerSession(authOptions);
-
-  if (!session?.accessToken) {
+  if (!accessToken) {
     return Response.json({ reflections: [] });
   }
 
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 70000);
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     const res = await fetch(
-      "https://apis-prelive.quran.foundation/quran-reflect/v1/posts/my-posts?tab=my_reflections",
+      "https://apis-prelive.quran.foundation/quran-reflect/v1/posts/my-posts?tab=my_reflections&limit=20",
       {
         signal: controller.signal,
         headers: {
           "Accept": "application/json",
-          "x-auth-token": session.accessToken as string,
+          "x-auth-token": accessToken,
           "x-client-id": process.env.QURAN_CLIENT_ID!,
         },
       }
     );
 
     clearTimeout(timeout);
+
+    if (res.status === 403 || res.status === 401) {
+      return Response.json({ reflections: [], error: "token_expired" });
+    }
+
     const data = await res.json();
-    console.log("history status:", res.status, JSON.stringify(data).slice(0, 200));
-    return Response.json({ reflections: data.data ?? [] });
+
+    // QF API wraps results differently depending on endpoint version
+    const reflections =
+      data.data ??
+      data.posts ??
+      data.reflections ??
+      data.items ??
+      (Array.isArray(data) ? data : []);
+
+    return Response.json({ reflections });
   } catch (err) {
     console.log("history error:", err);
     return Response.json({ reflections: [] });

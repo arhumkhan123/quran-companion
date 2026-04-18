@@ -11,6 +11,7 @@ export type DailyAction = {
     const history: DailyAction[] = JSON.parse(localStorage.getItem("dailyActions") || "[]");
     const filtered = history.filter((a) => a.date !== today);
     localStorage.setItem("dailyActions", JSON.stringify([...filtered, action]));
+    window.dispatchEvent(new CustomEvent("streak-updated"));
   }
   
   export function getYesterdayAction(): DailyAction | null {

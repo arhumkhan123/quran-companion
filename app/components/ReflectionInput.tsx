@@ -21,6 +21,7 @@ export default function ReflectionInput({ verseKey, roomId, accessToken, arabicT
   const [syncing, setSyncing] = useState(false);
   const [syncDone, setSyncDone] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [showShareCard, setShowShareCard] = useState(false);
 
   useEffect(() => {
     if (!syncing) return;
@@ -123,22 +124,36 @@ export default function ReflectionInput({ verseKey, roomId, accessToken, arabicT
         )}
 
         <div className="card p-6">
-          <p className="font-medium text-green-dark">
+          <p className="font-medium" style={{ color: "var(--color-text)" }}>
             JazakAllah khair! Your reflection was shared. 🌿
           </p>
-          <button
-            onClick={() => { setSubmitted(false); setSyncing(false); setSyncDone(false); }}
-            className="mt-3 text-sm underline underline-offset-4 text-green-mid"
-          >
-            Write another reflection
-          </button>
+          <div className="flex items-center gap-4 mt-3">
+            <button
+              onClick={() => { setSubmitted(false); setSyncing(false); setSyncDone(false); setShowShareCard(false); }}
+              className="text-sm underline underline-offset-4"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Write another
+            </button>
+            <button
+              onClick={() => setShowShareCard((v) => !v)}
+              className="text-sm underline underline-offset-4"
+              style={{ color: "var(--color-green-dark)" }}
+            >
+              {showShareCard ? "Hide share card" : "📤 Create share card"}
+            </button>
+          </div>
         </div>
-        <ShareCard
-          verseKey={verseKey}
-          arabicText={arabicText ?? ""}
-          translation={translation ?? ""}
-          reflection={submittedReflection}
-        />
+        {showShareCard && (
+          <div style={{ overflowX: "auto" }}>
+            <ShareCard
+              verseKey={verseKey}
+              arabicText={arabicText ?? ""}
+              translation={translation ?? ""}
+              reflection={submittedReflection}
+            />
+          </div>
+        )}
       </div>
     );
   }

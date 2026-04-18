@@ -180,7 +180,7 @@ export default function AyahCard({ verse: verseProp }: Props) {
         {/* Full tafsir link */}
         {verse.tafsir && (
           <Link
-            href={`/tafsir/${encodeURIComponent(verse.verse_key)}`}
+            href={`/tafsir?verse=${encodeURIComponent(verse.verse_key)}`}
             className="self-start text-xs font-medium underline underline-offset-4 text-green-mid transition"
           >
             Read full tafsir →
